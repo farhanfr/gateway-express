@@ -1,5 +1,5 @@
 http:
-  port: ${PORT}
+  port: 8080
 apiEndpoints:
   product:
     host: '*'
