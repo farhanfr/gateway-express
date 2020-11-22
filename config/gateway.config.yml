@@ -1,14 +1,11 @@
 http:
   port: ${PORT}
-admin:
-  port: 9876
-  host: 'https://cobagate.herokuapp.com'
 apiEndpoints:
   product:
-    host: 'https://cobagate.herokuapp.com'
+    host: '*'
     paths: ['/product', '/product/*']
   account:
-    host: 'https://cobagate.herokuapp.com'
+    host: '*'
     paths: ['/account', '/account/*']
 serviceEndpoints:
   product:
