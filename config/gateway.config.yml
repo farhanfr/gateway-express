@@ -1,0 +1,48 @@
+http:
+  port: 8080
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  product:
+    host: localhost
+    paths: ['/product', '/product/*']
+  account:
+    host: localhost
+    paths: ['/account', '/account/*']
+serviceEndpoints:
+  product:
+    url: 'https://product-service-indent.herokuapp.com'
+  account:
+    url: 'https://acc-serv-bp.herokuapp.com'
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+  - rewrite
+pipelines:
+  product:
+    apiEndpoints:
+      - product
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: product
+              ignorePath: false
+              prependPath: true
+              stripPath: true
+  account:
+    apiEndpoints:
+      - account
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: account
+              ignorePath: false
+              prependPath: true
+              stripPath: true
